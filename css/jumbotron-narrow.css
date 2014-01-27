@@ -1,0 +1,255 @@
+/* Space out content a bit */
+html {
+  background-color: #2e2e2e;
+}
+
+body {
+  padding-top: 10px;
+  padding-bottom: 0px;
+  color: #5f564e;
+  background-color: white;
+  font-family: "Segoe UI Light", "Segoe UI", "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+h4 {
+  font-size: 1.8em;
+  font-family: "Open Sans Condensed", "Fjalla One", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+pre {
+  margin-bottom: 20px;
+}
+
+img.figure {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.container {
+  padding-bottom: 30px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 5px;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-top: 3px;
+  padding-bottom: 20px;
+  font-family: "Open Sans Condensed", Helvetica, Arial, sans-serif;
+}
+
+.header li a {
+  color: #5f564e;
+  font-size: 18px;
+  font-family: "Open Sans Condensed", Helvetica, Arial, sans-serif;
+}
+
+.header li.site-title a {
+  color: #5f564e;
+  font-size: 22px;
+  font-family: "Fjalla One", Helvetica, Arial, sans-serif;
+}
+
+.header li.site-title i.fa {
+  color: #198360;
+  padding-right: 10px;
+}
+
+.toc-heading {
+  color: #5f564e;
+  font-size: 16px;
+  font-family: "Fjalla One", Helvetica, Arial, sans-serif;
+}
+
+ul.toc a {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  color: #5f564e;
+  font-size: 16px;
+  font-family: "Open Sans Condensed", Helvetica, Arial, sans-serif;
+}
+
+div.toc button {
+  color: #5f564e;
+  font-size: 16px;
+  font-weight: normal;
+  font-family: "Open Sans Condensed", Helvetica, Arial, sans-serif;
+}
+
+.profile-photo {
+  width: 60px;
+  height: 60px;
+  margin-top: 10px;
+}
+
+
+/* Custom page footer */
+.footer {
+  padding-top: 15px;
+  color: #eaeaea;
+  border-top: 1px solid #e5e5e5;
+  background-color: #2e2e2e;
+}
+
+
+
+/*
+ * Side navigation
+ *
+ * Scrollspy and affixed enhanced navigation to highlight sections and secondary
+ * sections of docs content.
+ */
+
+/* By default it's not affixed in mobile views, so undo that */
+.bs-sidebar.affix {
+  position: static;
+}
+
+/* First level of nav */
+.bs-sidenav {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-top:    10px;
+  padding-bottom: 10px;
+  text-shadow: 0 1px 0 #fff;
+  background-color: #f7f5fa;
+  border-radius: 5px;
+}
+
+/* All levels of nav */
+.bs-sidebar .nav > li > a {
+  display: block;
+  color: #716b7a;
+  padding: 5px 20px;
+  border-radius: 0px;
+}
+.bs-sidebar .nav > li > a:hover,
+.bs-sidebar .nav > li > a:focus {
+  text-decoration: none;
+  background-color: #e5e3e9;
+  border-left: 1px solid #dbd8e0;
+}
+.bs-sidebar .nav > .active > a,
+.bs-sidebar .nav > .active:hover > a,
+.bs-sidebar .nav > .active:focus > a {
+  //font-weight: bold;
+  color: #563d7c;
+  background-color: transparent;
+  border-left: 1px solid #563d7c;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-sidebar .nav .nav {
+  display: none; /* Hide by default, but at >768px, show it */
+  margin-bottom: 8px;
+}
+.bs-sidebar .nav .nav > li > a {
+  padding-top:    3px;
+  padding-bottom: 3px;
+  padding-left: 30px;
+  font-size: 90%;
+}
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+  .bs-sidebar .nav > .active > ul {
+    display: block;
+  }
+  /* Widen the fixed sidebar */
+  .bs-sidebar.affix,
+  .bs-sidebar.affix-bottom {
+    width: 200px;
+  }
+  .bs-sidebar.affix {
+    position: fixed; /* Undo the static from mobile first approach */
+    top: 95px;
+  }
+  .bs-sidebar.affix-bottom {
+    position: absolute; /* Undo the static from mobile first approach */
+  }
+  .bs-sidebar.affix-bottom .bs-sidenav,
+  .bs-sidebar.affix .bs-sidenav {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 1200px) {
+  /* Widen the fixed sidebar again */
+  .bs-sidebar.affix-bottom,
+  .bs-sidebar.affix {
+    width: 200px;
+  }
+}
+
+
+
+
+
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 900px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
