@@ -1,0 +1,269 @@
+/*******************************************************************************
+ * Default Theme
+ *
+ * Copyright(c) 1999-2014, Tom Huang Software Consultancy.
+ * All rights reserved.
+ ******************************************************************************/
+
+
+/*
+ * Table of contents:
+ *
+ * Generic Tags
+ * Generic Classes
+ * Page Elements
+ *     Homepage - Post Title in the List
+ *     Homepage - Post Date in the List
+ *     Homepage - Section Titles
+ *     Homepage - Jumbotron - Slogan
+ *     Homepage - Jumbotron - Description
+ *     Homepage - Jumbotron - Button
+ *     Homepage - Jumbotron - Version
+ *     Post Page - Post Title
+ *     Post Page - Post Meta Data (e.g. Date)
+ *     Post Page - Figure
+ *     Page Header - Logo
+ *     Page Header - Title
+ *     Page Header - Main Menu Items
+ *     Page Footer - Slogan
+ *     Page Footer - Copyright
+ *     Page Footer - Meta Data
+ *     Page Footer - About Icon
+ *     Page Footer - Hyperlink
+ *     
+ */
+
+/* Generic Tags */
+
+html {
+  background-color: #2e2e2e;
+}
+
+body {
+  padding-top: 10px;
+  padding-bottom: 0px;
+  color: #5f564e;
+  background-color: white;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+pre {
+  margin-bottom: 20px;
+}
+
+/* Generic Classes */
+
+.container {
+  padding-bottom: 30px;
+}
+
+.site-logo i.fa-circle,
+.site-logo i.fa-square {
+  color: #198360;
+}
+
+.site-logo i.fa-th,
+.site-logo i.fa-terminal {
+  color: #eaeaea;
+}
+
+.profile-photo {
+  width: 60px;
+  height: 60px;
+  margin-top: 10px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 5px;
+  margin-bottom: 30px;
+}
+
+.footer {
+  padding-top: 15px;
+  color: #eaeaea;
+  border-top: 1px solid #e5e5e5;
+  background-color: #2e2e2e;
+}
+
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  background: url('/img/background.jpg');
+}
+
+
+/* Page Elements */
+
+/* Homepage - Post Title in the List */
+ul.posts li a {
+  font-size: 1.0em;
+  font-weight: 600;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+/* Homepage - Post Date in the List */
+ul.posts li span {
+  font-size: 0.9em;
+  font-weight: 400;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+/* Homepage - Section Titles */
+div.home-post > h2 {
+  font-size: 1.8em;
+  font-family: "Fjalla One", Helvetica, Arial, sans-serif;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+/* Post Page - Post Title */
+div.post > h2 {
+  font-size: 1.8em;
+  font-family: "Fjalla One", Helvetica, Arial, sans-serif;
+}
+
+/* Post Page - Post Meta Data (e.g. Date) */
+div.post > p.meta {
+  font-size: 0.9em;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+/* Post Page - Figure */
+img.figure {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Page Header - Logo */
+.header span.site-logo {
+  font-size: 0.80em;
+  margin-right: 6px;
+}
+
+/* Page Header - Title */
+.header li.site-title a {
+  color: #5f564e;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  font-family: "Fjalla One", Helvetica, Arial, sans-serif;
+}
+
+/* Page Header - Main Menu Items */
+.header li a {
+  color: #5f564e;
+  font-size: 1.5em;
+  font-family: "Open Sans Condensed", Helvetica, Arial, sans-serif;
+}
+
+/* Page Footer - Slogan */
+.footer div.slogan {
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 10px;
+  font-weight: 300;
+  font-size: 1.7em;
+  font-family: "Fjalla One", Helvetica, Arial, sans-serif;
+}
+
+/* Page Footer - Copyright */
+.footer div.copyright {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 300;
+  font-size: 1.0em;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+/* Page Footer - Meta Data */
+.footer div.meta {
+  text-align: center;
+  margin-top: 5px;
+  font-weight: 300;
+  font-size: 0.9em;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+/* Page Footer - About Icon */
+.footer div.about {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Page Footer - Hyperlink */
+.footer a,
+.footer a:hover {
+  color: #FFB547;
+}
+
+/* Homepage - Jumbotron - Slogan */
+.jumbotron > h1 {
+  color: #2e2e2e;
+  font-weight: 800;
+  font-size: 1.8em;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+/* Homepage - Jumbotron - Description */
+.jumbotron > p {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: #2e2e2e;
+  font-size: 1.1em;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+/* Homepage - Jumbotron - Button */
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-weight: 700;
+  font-size: 0.8em;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+/* Homepage - Jumbotron - Version */
+.jumbotron span.version {
+  font-weight: 300;
+  font-size: 1.0em;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 900px;
+  }
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
