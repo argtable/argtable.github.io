@@ -54,6 +54,3 @@ If you want to create useful utilities in .NET Platform but hate this tons-of-as
 * **Cross-platform**: Available on UNIX (Linux, Mac OS-X, Android, iOS) and Windows.
 * **BSD-licensed**: Use the library for any purpose, including in commercial programs.
 
-## What's Next
-
-* 
