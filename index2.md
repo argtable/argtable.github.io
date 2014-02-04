@@ -103,6 +103,31 @@ CLI programs have become more and more important in the cloud computing era. We 
 
 <span class="label label-default">NOTICE</span> This web site is for the latest Argtable **v3 series**, which is derived from Argtable v2 series created by [Stewart Heitmann][heitmann]. **Argtable3 is not backward-compatible**. Therefore, if you want to use Argtable2 API, you have to go to the [Argtable2 web site][argtable2] and get the source code from its [Sourceforge.net project page][argtable2-sourceforge].
 
+
+## Acknowledgements
+
+* *Stewart Heitmann* for creating the original argtable-1.x and argtable-2.x libraries.
+* *Nina Clemson* for editing the original argtable-1.0 documentation.
+* *Livio Bertacco* for contributing bug fixes and the argtable-2.x Visual C++ Makefiles.
+* *Justin Dearing* for contributing bug fixes and Windows DLL support, plus code support for the Open Watcom compiler and help with the Mac OS X configuration.
+* *Asa Packer* for contributing bug fixes and upgrades to the Visual C++ Makefiles.
+* *Danilo Cicerone* for the Italian translation of "Introduction to Argtable-2x" and the argtable devpak.
+* *Uli Fouquet* for configuration patches and documentation related to cross-compiling argtable from Unix to Windows as well as providing the arg_print_glossary_gnu function.
+* *Shachar Schemesh* for integrating argtable into Debian Linux and kick-starting the migration to automake/autoconf.
+* *Jasper Lievisse Adriaanse* for maintaining the argtable package in OpenBSD ports.
+* *Ulrich Mohr* for bug fixes relating to Texas Instrument DSP platforms.
+* *John Vickers* and *Steve O'Neil* for bug fixes relating to Solaris/Motorola platforms.
+* *Lori A. Pritchett-Sheats* for fixing a makefile bug relating to "make dist".
+* *Paolo Bormida* for instructions on building argtable with date and regex support on Windows.
+* *Michel Valin* for bug fixes relating to the configure scripts on IBM AIX platforms and instructions on compiling the example code under AIX.
+* *Steve Christensen* for providing prebuilt packages for SPARC/Solaris and x86/Solaris platforms on www.sunfreeware.com.
+* *Jess Portnoy* for reworking the rpm package and integrating argtable into Fedora Linux.
+* *Michael Brown* for incorporating support for pkg-config into the autoconf scripts.
+* *Alexander Lindert* for extensions to the parser to support hex, octal and binary integer formats as well as KB/MB/GB suffixes.
+* *Rob Zaborowski* for providing build configuration files for the CMake tool.
+* *Moczik Gabor* for bug fixes relating to the parsing of filepaths and filename extensions.
+* *Hanspeter Niederstrasser* for including the argtable package in FinkProject for Mac OS X.
+
 [heitmann]: email:sheitmann@users.sourceforge.net
 [argtable2]: http://argtable.sourceforge.net/
 [argtable2-sourceforge]: http://sourceforge.net/projects/argtable/
