@@ -1,6 +1,6 @@
 ---
-layout: default2
-title: Argtable.org
+layout: post2
+title: A Tutorial Introduction of Argtable3 - Argtable.org
 ---
 
 ## What is Argtable
