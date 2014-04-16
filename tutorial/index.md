@@ -1,6 +1,8 @@
 ---
 layout: post2
-title: A Tutorial Introduction of Argtable3 - Argtable.org
+title:  "A Tutorial Introduction of Argtable3 - Argtable.org"
+date:   2014-04-09 10:12:04
+tags: tutorial
 ---
 
 ## What is Argtable
