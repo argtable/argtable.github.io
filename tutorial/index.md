@@ -7,6 +7,11 @@ tags: tutorial
 
 Argtable is an open source ANSI C library that parses GNU-style command-line options. It simplifies command-line parsing by defining a declarative-style API that you can use to specify *what* your command-line syntax looks like. Argtable will automatically generate consistent error handling logic and textual descriptions of the command line syntax, which are essential but tedious to implement for a robust CLI program. For example, to create a CLI program that looks like:
 
+### Quick Start
+
+Argtable3 is a single-file ANSI-C library. All you have to do is adding argtable3.c to your projects, and including argtable3.h in your source code.
+
+
 ```
 $> util.exe --help
 Usage: util.exe [-v] [--help] [--version] [--level=<n>] [-o myfile] <file> [<file>]...
