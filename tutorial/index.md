@@ -1,11 +1,9 @@
 ---
 layout: post2
-title:  "A Tutorial Introduction of Argtable3 - Argtable.org"
+title:  "A Tutorial Introduction of Argtable3"
 date:   2014-04-09 10:12:04
 tags: tutorial
 ---
-
-## What is Argtable
 
 Argtable is an open source ANSI C library that parses GNU-style command-line options. It simplifies command-line parsing by defining a declarative-style API that you can use to specify *what* your command-line syntax looks like. Argtable will automatically generate consistent error handling logic and textual descriptions of the command line syntax, which are essential but tedious to implement for a robust CLI program. For example, to create a CLI program that looks like:
 
