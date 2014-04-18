@@ -107,7 +107,7 @@ Argtable provides a set of `arg_xxx` structs, one for each type of argument (lit
 
 To define the command line options, you have to create an `arg_xxx` struct for each type of argument required and collate them into an array that we call the **argument table**. The order of the structs in the argument table defines the order in which the command line options are expected, although the parsing order really only matters for untagged options. The argument table itself is just an array of void pointers, and by convention each `arg_xxx` struct has a known `arg_hdr` struct as its first entry that the argtable functions use to identify the structure.
 
-For example, let us consider the `arg_int` struct, which is used for command-line options taking integer arguments, as in -–scalar=7.
+For example, let us consider the `arg_int` struct, which is used for command-line options taking integer arguments, as in `-–scalar=7`.
 
 ```
 struct arg_int
@@ -118,21 +118,9 @@ struct arg_int
 };
 ```
 
-The struct's first data member, hdr, holds the “private” data used by the argtable library functions. It contains things like the argument's tag string and so on. Direct access to this data is openly permitted, but it rarely necessary to do so. The ival member variable points to an array of integers that hold the values extracted from the command line and count gives the number of values held in the array. The storage for the ival array is allocated when the arg_int is constructed. This must done with one of the dedicated arg_int constructor functions:
+The first data member of the struct, `hdr`, holds the **private** data used by the Argtable3 library functions. It contains things like the argument's tag string and so on. Direct access to this data is openly permitted, but it is rarely necessary to do so. The `ival` member variable points to an array of integers that hold the values extracted from the command line and `count` gives the number of values held in the array. The storage for the `ival` array is allocated when the `arg_int` is constructed. This must done with the `arg_int` constructor function:
 
 ```
-struct arg_int * arg_int0(
-    const char *shortopts,
-    const char *longopts,
-    const char *datatype,
-    const char *glossary);
-
-struct arg_int * arg_int1(
-    const char *shortopts,
-    const char *longopts,
-    const char *datatype,
-    const char *glossary);
-
 struct arg_int * arg_intn(
     const char* shortopts,
     const char* longopts,
@@ -142,38 +130,36 @@ struct arg_int * arg_intn(
     const char *glossary);
 ```
 
-All the argtable constructor functions work in the same manner; they allocate a block of memory that contains an arg_xxx struct at its head followed by storage for the local data for that structure, in this case the contents of the ival array. For this reason, you should never manually instantiate any arg_xxx struct yourself. Always use the constructor functions provided to allocate the structure and deallocate it using free when you are finished.
+The constructor functions of all argument types work in the same manner: they allocate a block of memory that contains an `arg_xxx` struct at its head followed by storage for the local data for that structure, in this case the contents of the `ival` array. For this reason, you should never manually instantiate any `arg_xxx` struct yourself. Always use the constructor functions provided to allocate the structure and deallocate it using free when you are finished.
 
-The three forms of the arg_int constructors represent the three most common uses of command line arguments: arg_int0 is for options that appear zero-or-once on the command line, arg_int1 is for options that appear exactly once on the command line, and arg_intn is for options that appear any number of times (within a given range). Thus arg_int0 and arg_int1 will both allocate one element to the ival array of the resulting structure, whereas arg_intn will allocate sufficient space for ival to store up to maxcount elements. The former are just specialised forms of the latter and are provided for convenience. Notice the arg_xxx0, arg_xxx1, and arg_xxxn naming convention applies likewise to all argtable constructor functions.
-
-Continuing with our arg_int example, the following code fragment will construct a integer type option of the form --scalar=<n> that must appear on the command line between 3 and 5 times inclusive.
+Continuing with our `arg_int` example, the following code snippet will construct an integer-type option of the form `--scalar=<n>` that must appear on the command line between 3 and 5 times inclusive.
 
 ```
 struct arg_int *s;
-s = arg_intn(NULL,”scalar”,”<n>”,3,5,“foo value”);
+s = arg_intn(NULL, "scalar", "<n>", 3, 5, "foo value");
 ```
 
-Upon completion s will point to a memory block containing the arg_int struct followed by the ival array of 5 elements.
+Upon completion `s` will point to a memory block containing the `arg_int` struct followed by the `ival` array of 5 elements.
 
 <<<img>>>
 
-As shown in the diagram, the s->hdr structure keeps, among other things, references back to the string parameters of the constructor function. The s->count variable is initialised to zero as it represents the number of valid values that are stored in the s->ival array after parsing the command line. The size of the s->ival array is instead given by s->hdr.maxcount.
+As shown in the diagram, the `s->hdr` structure keeps, among other things, references back to the string parameters of the constructor function. The `s->count` variable is initialised to zero as it represents the number of valid values that are stored in the `s->ival` array after parsing the command line. The size of the `s->ival` array is instead given by `s->hdr.maxcount`.
 
-In this example we omitted a short option form by passing a NULL shortopts parameter to the constructor function. If instead we passed shortops as, say, “k”
-
-```
-s = arg_intn(“k”,”scalar”,”<n>”,3,5,“foo value”);
-```
-
-then the resulting structure would be the same but the option could be accepted on the command line as either -k<n> or –scalar=<n> equivalently. Indeed, we can go even further and define multiple alternative forms for both the short and long options. Alternative short options are given a string of single characters, whereas long options are given as a comma separated string. For instance,
+In this example we omitted a short option form by passing a `NULL` shortopts parameter to the constructor function. If instead we passed shortops as, say, `"k"`:
 
 ```
-s = arg_intn(“kKx”,”scalar,foo”,”<n>”,3,5,“foo value”);
+s = arg_intn("k", "scalar", "<n>", 3, 5, "foo value");
 ```
 
-will accept any of the following alternative forms on the command line: -k<n> -K<n> -x<n> --scalar=<n> --foo=<n>
+then the resulting structure would be the same but the option could be accepted on the command line as either `-k<n>` or `-–scalar=<n>` equivalently. Indeed, we can go even further and define multiple alternative forms for both the short and long options. Alternative short options are given a string of single characters, whereas long options are given as a comma separated string. For instance,
 
-Apart from arg_int, other arg_xxx structs of interest are:
+```
+s = arg_intn("kKx", "scalar,foo", "<n>", 3, 5, "foo value");
+```
+
+will accept any of the following alternative forms on the command line: `-k<n>` `-K<n>` `-x<n>` `--scalar=<n>` `--foo=<n>`
+
+Apart from `arg_int`, other `arg_xxx` structs of interest are:
 
 ```
 struct arg_lit
@@ -224,40 +210,40 @@ struct arg_date
 
 ### The Argument Table
 
-Having constructed our arg_xxx structs we collate them into an argument table, as in the following example which defines the command line arguments:[-a] [-b] [-c] [--scalar=<n>] [-v|--verbose] [-o myfile] <file> [<file>]
+Having constructed our `arg_xxx` structs we collate them into an argument table, as in the following example which defines the command line arguments: `[-a] [-b] [-c] [--scalar=<n>] [-v|--verbose] [-o myfile] <file> [<file>]`
 
 ```
-struct arg_lit *a = arg_lit0(“a”, NULL, ”the -a option”);
-struct arg_lit *b = arg_lit0(“b”, NULL, ”the -b option”);
-struct arg_lit *c = arg_lit0(“c”, NULL, ”the -c option”);
-struct arg_int *scal = arg_int0(NULL, ”scalar”,”<n>”, ”foo value”);
-struct arg_lit *verb = arg_lit0(“v”, ”verbose, ”verbose output”);
-struct arg_file *o = arg_file0(“o”, NULL,”myfile”, ”output file”);
-struct arg_file *file = arg_filen(NULL,NULL,”<file>”,1,2, ”input files”);
+struct arg_lit *a = arg_litn("a", NULL, 0, 1, "the -a option");
+struct arg_lit *b = arg_litn("b", NULL, 0, 1, "the -b option");
+struct arg_lit *c = arg_litn("c", NULL, 0, 1, "the -c option");
+struct arg_int *scal = arg_intn(NULL, "scalar", "<n>", 0, 1, "foo value");
+struct arg_lit *verb = arg_litn("v", "verbose", 0, 1, "verbose output");
+struct arg_file *o = arg_filen("o", NULL,"myfile", 0, 1, "output file");
+struct arg_file *file = arg_filen(NULL, NULL, "<file>", 1, 2, "input files");
 struct arg_end *end = arg_end(20);
-void *argtable[] = {a,b,c,scal,verb,o,file,end};
+void *argtable[] = {a, b, c, scal, verb, o, file, end};
 ```
 
-The “-a”, “-b”, “-c” and “-v|--verbose” options do not take argument values so we use arg_lit structs for them. We use the arg_lit0 form of the constructor function because these particular options only appear on the command line once or not at all.
+The `-a`, `-b`, `-c` and `-v|--verbose` options do not take argument values so we use `arg_lit` structs for them. We specify `mincount` to `0` and `maxcount` to `1` because these particular options only appear on the command line once or not at all.
 
-The “--scalar=<n>” option takes an integer argument so its uses an arg_int struct. It too appears either once or not at all so we use the arg_int0 constructor function.
+The `--scalar=<n>` option takes an integer argument so its uses an `arg_int` struct. It too appears either once or not at all so we specify `mincount` to `0` and `maxcount` to `1`.
 
-The “-o myfile” and “<file>” options both refer to filenames so we use the arg_file struct for them. We use the arg_file0 constructor function for the former because it appears either once or not at all, but the latter must appear either once or twice so we use the more general arg_filen constructor function for that. Notice that it is an untagged option as it does not take either short or long option strings.
+The `-o myfile` and `<file>` options both refer to filenames so we use the `arg_file` struct for them. Notice that it is an untagged option as it does not take either short or long option strings.
 
-The arg_end struct is a special one as it doesn't represent any command line option. Primarily it marks the end of the argtable array, but it also stores any parser errors encountered when processing the command line arguments. The integer parameter passed to the arg_end constructor is the maximum number of errors that it will store, in this case 20, any further errors are discarded and replaced with the single error message “too many errors”.
+The `arg_end` struct is a special one as it doesn't represent any command-line option. Primarily it marks the end of the argtable array, but it also stores any parser errors encountered when processing the command-line arguments. The integer parameter passed to the `arg_end` constructor is the maximum number of errors that it will store, in this case `20`, any further errors are discarded and replaced with the single error message "too many errors".
 
-We will see how to use arg_end in error reporting soon but first we must ensure that all of the argument table entries were successfully allocated by their constructor functions. If they were'nt then there will be NULL entries in the argtable array which will cause trouble. We can use the arg_nullcheck function to check argtable for NULL entries in one step. It returns non-zero if any NULL entries were encountered up until the end of the table as marked by the arg_end structure.
+We will see how to use `arg_end` in error reporting soon, but first we must ensure that all of the argument table entries were successfully allocated by their constructor functions. If they were'nt then there will be `NULL` entries in the argtable array which will cause trouble. We can use the `arg_nullcheck` function to check argtable for `NULL` entries in one step. It returns non-zero if any `NULL` entries were encountered up until the end of the table as marked by the `arg_end` structure.
 
 ```
 if (arg_nullcheck(argtable) != 0)
     printf("error: insufficient memory\n");
 ```
 
-Presuming that went well, we may now initate any default values we wish to assign our optional arguments. We simply write our desired values directly into the arg_xxx structs knowing that argtable will only overwrite them if valid command line values are given in their place. Here we set the default values of 3 and “-” for the repeat and outfile arguments respectively.
+Presuming that went well, we may now initate any default values we wish to assign our optional arguments. We simply write our desired values directly into the `arg_xxx` structs knowing that argtable will only overwrite them if valid command-line values are given in their place. Here we set the default values of `3` and `-` for the repeat and outfile arguments respectively.
 
 ```
-repeat->ival[0]=3;
-outfile->filename[0]=”-”;
+repeat->ival[0] = 3;
+outfile->filename[0] = "-";
 ```
 
 Argtable does not require we initialise any default values, it is simply more convenient for our program if we pre-load defaults prior to parsing rather than retro-fit defaults to missing values later. However, you may prefer the latter.
@@ -265,28 +251,31 @@ Argtable does not require we initialise any default values, it is simply more co
 
 ### Parsing the Command Line
 
-Now our argument table is complete, we can use it to parse the command line arguments. We use the arg_parse function to do that, and it returns the number of parse errors it encountered.
+Now our argument table is complete, we can use it to parse the command-line arguments. We use the `arg_parse` function to do that, and it returns the number of parse errors it encountered.
 
 ```
-nerrors = arg_parse(argc,argv,argtable);
+nerrors = arg_parse(argc, argv, argtable);
 ```
 
-If there were no errors then we have successfully parsed the command line and we can proceed with our main processing task, using the values to be found in our program's arg_xxx structs.
+If there were no errors then we have successfully parsed the command line and we can proceed with our main processing task, using the values to be found in our program's `arg_xxx` structs.
 
 ```
-if (nerrors==0)
+if (nerrors == 0)
 {
     int i;
-    printf(“-a = %d\n”, a->count);
-    printf(“-b = %d\n”, b->count);
-    printf(“-c = %d\n”, c->count);
-    printf(“--verbose = %d\n”, verb->count);
+    printf("-a = %d\n", a->count);
+    printf("-b = %d\n", b->count);
+    printf("-c = %d\n", c->count);
+    printf("--verbose = %d\n", verb->count);
+    
     if (scal->count > 0)
-    printf(“--scalar=%d\n”,scal->ival[0]);
+        printf(“--scalar=%d\n”, scal->ival[0]);
+    
     if (o->count > 0)
-    printf(“-o %s\n”,o->filename[0]);
-    for (i=0; i<file->count; i++)
-    printf(“file[%d]=%s\n”,i,file->filename[i]);
+        printf(“-o %s\n”, o->filename[0]);
+    
+    for (i = 0; i < file->count; i++)
+        printf(“file[%d]=%s\n”, i, file->filename[i]);
 };
 ```
 
@@ -299,14 +288,14 @@ If the arg_parse function reported errors then we need to display them as arg_pa
 void arg_print_errors(FILE* fp, struct arg_end* end, const char* progname);
 ```
 
-We pass the function a pointer to the argument table's arg_end struct as well as the name of the program which is prependend to each error message. The program name can be NULL if not required.
+We pass the function a pointer to the argument table's `arg_end` struct as well as the name of the program which is prependend to each error message. The program name can be `NULL` if not required.
 
 ```
 If (nerrors > 0)
-    arg_print_errors(stdout,end,”myprog”);
+    arg_print_errors(stdout, end, "myprog");
 ```
 
-This example illustrates the results of invoking our example program with incorrect command line options:
+This example illustrates the results of invoking our example program with incorrect command-line options:
 
 ```
 $ ./myprog -x -y -z --scalar=hello --verby
@@ -318,25 +307,25 @@ myprog: invalid option "--verby"
 myprog: missing option <file>
 ```
 
-The reason arg_parse function doesnt print error messages is so it can be called multiple times to parse the command line with alternative argument tables without having extraneous error messages displayed prematurely. Thus we may define separate argument tables for those programs that have mutually exclusive sets of command line options, trying each argument table in turn until we find a successful candidate. Should all argument tables fail to satisfy then we can choose to print the error messages from all of them, or perhaps only show the errors form the one that matched the closest. In any event, we control which messages are displayed.
+The reason `arg_parse` function doesn't print error messages is so it can be called multiple times to parse the command line with alternative argument tables without having extraneous error messages displayed prematurely. Thus we may define separate argument tables for those programs that have mutually exclusive sets of command-line options, trying each argument table in turn until we find a successful candidate. Should all argument tables fail to satisfy then we can choose to print the error messages from all of them, or perhaps only show the errors form the one that matched the closest. In any event, we control which messages are displayed.
 
 
 ### Displaying the Option Syntax
 
-If you want your program to display on-line help you can use the arg_print_syntax function to display the exact command line syntax as derived from an argument table. There are actually two forms of the function:
+If you want your program to display on-line help you can use the `arg_print_syntax` function to display the exact command-line syntax as derived from an argument table. There are actually two forms of the function:
 
 ```
 void arg_print_syntax(FILE *fp, void **argtable, const char *suffix);
 void arg_print_syntaxv(FILE *fp, void **argtable, const char *suffix);
 ```
 
-The latter displays a more verbose form of output, and is distinguished by the “v” at the end of the function name. Both functions display the syntax for an entire argument table, with the suffix parameter provided as a convenience for appending newline characters or any other string onto the end of the output. In the verbose form, each argument table entry displays its alternative short and long options separated by the “|” character followed by its datatype string. For instance,
+The latter displays a more verbose form of output, and is distinguished by the `v` at the end of the function name. Both functions display the syntax for an entire argument table, with the suffix parameter provided as a convenience for appending newline characters or any other string onto the end of the output. In the verbose form, each argument table entry displays its alternative short and long options separated by the `|` character followed by its datatype string. For instance,
 
 ```
-arg_int0(“kKx”,”scalar,foo”,”<n>”,“foo value”);
+arg_int0("kKx", "scalar,foo", "<n>", "foo value");
 ```
 
-will be displayed in verbose form as “[-k|-K|-x|--scalar|--foo=<n>]”. Whereas the standard form abbreviates the output by displaying only the first option of each argument table entry, as in “[-k <n>]”. The standard form also concatentates all short options in the argument table into a single option string at the head of the display in standard GNU style (eg: -a -b -c is displayed as -abc). The argument table from our previous example would thus be displayed in standard form as:
+will be displayed in verbose form as `[-k|-K|-x|--scalar|--foo=<n>]`. Whereas the standard form abbreviates the output by displaying only the first option of each argument table entry, as in `[-k <n>]`. The standard form also concatentates all short options in the argument table into a single option string at the head of the display in standard GNU-style (eg: `-a -b -c` is displayed as `-abc`). The argument table from our previous example would thus be displayed in standard form as:
 
 ```
 [-abcv] [--scalar=<n>] [-o myfile] <file> [<file>]
@@ -355,16 +344,15 @@ The arg_print_syntax functions safely ignore NULL short and long option strings,
 
 ### Displaying the Option Glossary
 
-The individual entries of the argument table can be displayed in a glossary layout by the arg_print_glossary function. It displays the full syntax of each argument table entry followed by each table entry's glossary string – the glossary string is the last parameter passed to the arg_xxx constructor functions. Table entries with NULL glossary strings are not displayed.
+The individual entries of the argument table can be displayed in a glossary layout by the `arg_print_glossary` function. It displays the full syntax of each argument table entry followed by each table entry's glossary string – the glossary string is the last parameter passed to the `arg_xxx` constructor functions. Table entries with `NULL` glossary strings are not displayed.
 
 ```
 void arg_print_glossary(FILE *fp, void **argtable, const char *format);
 ```
 
-The format string passed to the arg_print_glossary function is actually a printf style format string. It should contain exactly two “%s” format parameters, the first is used to control the printf format of the option's syntax string and the second is for the argument's glossary string. A typical format string would be " %-25s %s\n". The format string allows fine control over the display formatting but demands dilligence as any unexpected parameters in it will cause unpredictable results. Here is the results of calling arg_print_glossary on our earlier example argument table:
+The format string passed to the `arg_print_glossary` function is actually a printf style format string. It should contain exactly two `%s` format parameters, the first is used to control the `printf` format of the option's syntax string and the second is for the argument's glossary string. A typical format string would be `" %-25s %s\n"`. The format string allows fine control over the display formatting but demands dilligence as any unexpected parameters in it will cause unpredictable results. Here is the results of calling `arg_print_glossary` on our earlier example argument table:
 
 ```
-
 -a
 -b
 -c
