@@ -141,7 +141,7 @@ s = arg_intn(NULL, "scalar", "<n>", 3, 5, "foo value");
 
 Upon completion `s` will point to a memory block containing the `arg_int` struct followed by the `ival` array of 5 elements.
 
-<<<img>>>
+![Alt text](/assets/arg_int.gif)
 
 As shown in the diagram, the `s->hdr` structure keeps, among other things, references back to the string parameters of the constructor function. The `s->count` variable is initialised to zero as it represents the number of valid values that are stored in the `s->ival` array after parsing the command line. The size of the `s->ival` array is instead given by `s->hdr.maxcount`.
 
