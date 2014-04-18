@@ -35,11 +35,11 @@ int main(int argc, char *argv[])
 {
     /* the global arg_xxx structs are initialised within the argtable */
     void *argtable[] = {
-        help    = arg_lit0(NULL, "help", "display this help and exit"),
-        version = arg_lit0(NULL, "version", "display version info and exit"),
-        level   = arg_int0(NULL, "level", "<n>", "foo value"),
-        verb    = arg_lit0("v", "verbose", "verbose output"),
-        o       = arg_file0("o", NULL, "myfile", "output file"),
+        help    = arg_litn(NULL, "help", 0, 1, "display this help and exit"),
+        version = arg_litn(NULL, "version", 0, 1, "display version info and exit"),
+        level   = arg_intn(NULL, "level", "<n>", 0, 1, "foo value"),
+        verb    = arg_litn("v", "verbose", 0, 1, "verbose output"),
+        o       = arg_filen("o", NULL, "myfile", 0, 1, "output file"),
         file    = arg_filen(NULL, NULL, "<file>", 1, 100, "input files"),
         end     = arg_end(20),
     };
