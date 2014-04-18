@@ -20,6 +20,7 @@
  *     Homepage - Jumbotron - Button
  *     Homepage - Jumbotron - Version
  *     Post Page - Post Title
+ *     Post Page - Post Section Title
  *     Post Page - Post Meta Data (e.g. Date)
  *     Post Page - Figure
  *     Page Header - Logo
@@ -132,6 +133,14 @@ div.home-post > h2 {
 div.post > h2 {
   font-size: 1.8em;
   font-family: "Fjalla One", Helvetica, Arial, sans-serif;
+}
+
+/* Post Page - Post Section Title */
+div.post > h3 {
+  font-size: 1.6em;
+  font-family: "Fjalla One", Helvetica, Arial, sans-serif;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 /* Post Page - Post Meta Data (e.g. Date) */

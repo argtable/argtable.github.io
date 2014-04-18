@@ -7,9 +7,9 @@ layout: post2
 
 Parsing the command line of a program has always been a distraction from the main programming task at hand. The Argtable3 library simplifies the job by enabling programmers to define the command-line options directly in the source code as a static array of structs and then pass that array to argtable3 library functions that parse the command line accordingly. The values extracted from the comand line are saved directly in user-defined program variables where they can be accessed by the main program. Argtable3 can also generate descriptions of the command-line syntax from that same array for display as on-line help. The library is freely available under the terms of the 3-Clause BSD license.
 
-Argtable3 uses NetBSD getopt to perform the actual parsing so it follows the [POSIX Utility Conventions][posix-utility-conventions], which is followed by most of UNIX programs and some Windows programs. It supports both short options (such as `-abc` and `-o myfile`), long options (such as `–scalar=7` and `–verbose`), as well as untagged arguments (such as `<file> [<file>]`). It does not support non-POSIX command line formats, such as `/X /Y /Z` style options of many Windows programs.
+Argtable3 uses NetBSD getopt to perform the actual parsing so it follows the [POSIX Utility Conventions][posix-utility-conventions], which is followed by most of UNIX programs and some Windows programs. It supports both short options (such as `-abc` and `-o myfile`), long options (such as `–-scalar=7` and `–-verbose`), as well as untagged arguments (such as `<file> [<file>]`). It does not support non-POSIX command-line syntax, such as `/X /Y /Z` style options of many Windows programs.
 
-## Quick Start
+### Quick Start
 
 Argtable3 is a single-file ANSI-C library. All you have to do is adding argtable3.c to your projects, and including argtable3.h in your source code.
 
@@ -101,7 +101,7 @@ $ gcc util.c argtable3.c
 If you can successfully build the program and execute `util.exe --help` to see the help message, it means you've learned how to integrate Argtable3 into your program. In the following sections, we will explain how to use each option type, how to generate help messages, and how to handle errors.
 
 
-## How It Works
+### How It Works
 
 Argtable provides a set of arg_xxx structs, one for each type of argument (literal, integer, double, string, filename, etc) that it supports and each struct is capable of handling multiple occurrences of that argument on the command line. Furthermore, each option can be given alternative short option (ie: -c) or long option (ie: --scalar) forms that can be used interchangeably. It fact, each option can even take multiple alternative short or long options, or both. Options can also be defined to have no option tag at all (ie: <file>) in which case they are identifed by their position on the command line (tagged options can appear anywhere on the command line).
 
@@ -222,7 +222,7 @@ struct arg_date
 ```
 
 
-## The Argument Table
+### The Argument Table
 
 Having constructed our arg_xxx structs we collate them into an argument table, as in the following example which defines the command line arguments:[-a] [-b] [-c] [--scalar=<n>] [-v|--verbose] [-o myfile] <file> [<file>]
 
@@ -263,7 +263,7 @@ outfile->filename[0]=”-”;
 Argtable does not require we initialise any default values, it is simply more convenient for our program if we pre-load defaults prior to parsing rather than retro-fit defaults to missing values later. However, you may prefer the latter.
 
 
-## Parsing the Command Line
+### Parsing the Command Line
 
 Now our argument table is complete, we can use it to parse the command line arguments. We use the arg_parse function to do that, and it returns the number of parse errors it encountered.
 
@@ -291,7 +291,7 @@ if (nerrors==0)
 ```
 
 
-## Error Handling
+### Error Handling
 
 If the arg_parse function reported errors then we need to display them as arg_parse does not do so itself. As mentioned earlier, the arg_parse function stores the errors it encounters in the argument table's arg_end struct. We dont need to know the internal details of the arg_end struct, we simply call the arg_print_errors function to print those errors in the order they were encountered.
 
@@ -321,7 +321,7 @@ myprog: missing option <file>
 The reason arg_parse function doesnt print error messages is so it can be called multiple times to parse the command line with alternative argument tables without having extraneous error messages displayed prematurely. Thus we may define separate argument tables for those programs that have mutually exclusive sets of command line options, trying each argument table in turn until we find a successful candidate. Should all argument tables fail to satisfy then we can choose to print the error messages from all of them, or perhaps only show the errors form the one that matched the closest. In any event, we control which messages are displayed.
 
 
-# Displaying the Option Syntax
+### Displaying the Option Syntax
 
 If you want your program to display on-line help you can use the arg_print_syntax function to display the exact command line syntax as derived from an argument table. There are actually two forms of the function:
 
@@ -353,7 +353,7 @@ Notice that optional entries are automatically enclosed in square brackets where
 The arg_print_syntax functions safely ignore NULL short and long option strings, whereas a NULL datatype string is automatically replaced by the default datatype for that arg_xxx struct. The default datatype can be suppressed by using an empty datatype string instead of a NULL.
 
 
-## Displaying the Option Glossary
+### Displaying the Option Glossary
 
 The individual entries of the argument table can be displayed in a glossary layout by the arg_print_glossary function. It displays the full syntax of each argument table entry followed by each table entry's glossary string – the glossary string is the last parameter passed to the arg_xxx constructor functions. Table entries with NULL glossary strings are not displayed.
 
@@ -385,7 +385,7 @@ input files
 Sometimes you will wish to add extra lines of text to the glossary, or even put your own text into the syntax string generated by arg_print_syntax. You can add newline characters to your argument table strings if you wish, but it soon gets ugly. A better way is to add arg_rem structs to your argument table. They are dummy argument table entries in the sense that they do not alter the argument parsing but their datatype and glossary strings do appear in the output generated by the arg_print_syntax and arg_print_glossary functions. The name arg_rem is for “remark” and is inspired by the REM statement used in the BASIC language.
 
 
-## Cleaning Up
+### Cleaning Up
 
 At the end of our program we need to deallocate the memory allocated to each of our arg_xxx structs. We could do that by calling free on each of them individually, but the arg_freetable function can do it for us more conveniently.
 
@@ -396,7 +396,7 @@ arg_freetable(argtable,sizeof(argtable)/sizeof(argtable[0]));
 It will step through an argument table and call free on each of its elements on our behalf. Note the second parameter, sizeof(argtable)/sizeof(argtable[0]), merely represents the number of elements in our argtable array. Upon completion of this function, all of the argtable array entries will have been set to NULL.
 
 
-## Hint: Declaring Global arg_xxx Variables
+### Hint: Declaring Global arg_xxx Variables
 
 ANSI C wont allow the the arg_xxx constructor functions to be placed in the global namespace, so if you wish to make your arg_xxx structs global you must initialiase them elsewhere. Here's a programming trick for using global arg_xxx structs while stull declaring your argtable statically.
 
@@ -428,7 +428,7 @@ int main(int argc, char **argv)
 See the ls.c program included in the argtable distribution for an example of using this declaration style.
 
 
-## Example Programs
+### Example Programs
 
 The argtable distribution comes with example programs that implement complete GNU compatable command line options for several common unix commands. See the argtable-2.x/example/ directory for the source code of the following programs:
 
