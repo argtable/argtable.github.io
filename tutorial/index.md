@@ -28,7 +28,7 @@ Demonstrate command-line parsing in argtable3.
   <file>                    input files
 ```
 
-You can implement the command-line parsing logic with Argtable in the following way:
+You can implement the command-line parsing logic with Argtable3 in the following way:
 
 ```cpp
 #include "argtable3.h"
@@ -103,9 +103,9 @@ If you can successfully build the program and execute `util.exe --help` to see t
 
 ### How It Works
 
-Argtable provides a set of `arg_xxx` structs, one for each type of argument (literal, integer, double, string, filename, etc) that it supports and each struct is capable of handling multiple occurrences of that argument on the command line. Furthermore, each option can be given alternative short option (`-c`) or long option (`--scalar`) forms that can be used interchangeably. It fact, each option can even take multiple alternative short or long options, or both. Options can also be defined to have no option tag at all (`<file>`) in which case they are identifed by their position on the command line (tagged options can appear anywhere on the command line).
+Argtable3 provides a set of `arg_xxx` structs, one for each type of argument (literal, integer, double, string, filename, etc) that it supports and each struct is capable of handling multiple occurrences of that argument on the command line. Furthermore, each option can be given alternative short option (`-c`) or long option (`--scalar`) forms that can be used interchangeably. It fact, each option can even take multiple alternative short or long options, or both. Options can also be defined to have no option tag at all (`<file>`) in which case they are identifed by their position on the command line (tagged options can appear anywhere on the command line).
 
-To define the command line options, you have to create an `arg_xxx` struct for each type of argument required and collate them into an array that we call the **argument table**. The order of the structs in the argument table defines the order in which the command line options are expected, although the parsing order really only matters for untagged options. The argument table itself is just an array of void pointers, and by convention each `arg_xxx` struct has a known `arg_hdr` struct as its first entry that the argtable functions use to identify the structure.
+To define the command-line options, you have to create an `arg_xxx` struct for each type of argument required and collate them into an array that we call the **argument table**. The order of the structs in the argument table defines the order in which the command-line options are expected, although the parsing order really only matters for untagged options. The argument table itself is just an array of `void` pointers, and by convention each `arg_xxx` struct has a known `arg_hdr` struct as its first entry that the Argtable3 functions use to identify the structure.
 
 For example, let us consider the `arg_int` struct, which is used for command-line options taking integer arguments, as in `-–scalar=7`.
 
@@ -246,7 +246,7 @@ repeat->ival[0] = 3;
 outfile->filename[0] = "-";
 ```
 
-Argtable does not require we initialise any default values, it is simply more convenient for our program if we pre-load defaults prior to parsing rather than retro-fit defaults to missing values later. However, you may prefer the latter.
+Argtable3 does not require we initialise any default values, it is simply more convenient for our program if we pre-load defaults prior to parsing rather than retro-fit defaults to missing values later. However, you may prefer the latter.
 
 
 ### Parsing the Command Line
