@@ -1,7 +1,7 @@
 ---
 title:  "A Tutorial Introduction of Argtable3"
 date:   2014-04-09 10:12:04
-tags:   tutorial
+tags:   tutorial introduction
 layout: post2
 ---
 
