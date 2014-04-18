@@ -13,7 +13,7 @@ Argtable3 uses NetBSD getopt to perform the actual parsing so it follows the [PO
 
 Argtable3 is a single-file ANSI-C library. All you have to do is adding argtable3.c to your projects, and including argtable3.h in your source code.
 
-For example, if you want to create a utility named util.exe that has the following command-line options:
+For example, if you want to create a utility named `util.exe` that has the following command-line options:
 
 ```
 $> util.exe --help
@@ -28,7 +28,7 @@ Demonstrate command-line parsing in argtable3.
   <file>                    input files
 ```
 
-You can implement the command-line parsing logic with Argtable in the following code snippet:
+You can implement the command-line parsing logic with Argtable in the following way:
 
 ```cpp
 #include "argtable3.h"
@@ -103,11 +103,11 @@ If you can successfully build the program and execute `util.exe --help` to see t
 
 ### How It Works
 
-Argtable provides a set of arg_xxx structs, one for each type of argument (literal, integer, double, string, filename, etc) that it supports and each struct is capable of handling multiple occurrences of that argument on the command line. Furthermore, each option can be given alternative short option (ie: -c) or long option (ie: --scalar) forms that can be used interchangeably. It fact, each option can even take multiple alternative short or long options, or both. Options can also be defined to have no option tag at all (ie: <file>) in which case they are identifed by their position on the command line (tagged options can appear anywhere on the command line).
+Argtable provides a set of `arg_xxx` structs, one for each type of argument (literal, integer, double, string, filename, etc) that it supports and each struct is capable of handling multiple occurrences of that argument on the command line. Furthermore, each option can be given alternative short option (`-c`) or long option (`--scalar`) forms that can be used interchangeably. It fact, each option can even take multiple alternative short or long options, or both. Options can also be defined to have no option tag at all (`<file>`) in which case they are identifed by their position on the command line (tagged options can appear anywhere on the command line).
 
-To define a program's the command line options the user creates an arg_xxx struct for each type of argument required and collates them into an array which we call the argument table. The order of the structs in the argument table defines the order in which the command line options are expected, although the parsing order really only matters for untagged options. The argument table itself is just an array of void pointers, and by convention each arg_xxx struct has a known arg_hdr struct as its first entry that the argtable functions use to identify the structure.
+To define the command line options, you have to create an `arg_xxx` struct for each type of argument required and collate them into an array that we call the **argument table**. The order of the structs in the argument table defines the order in which the command line options are expected, although the parsing order really only matters for untagged options. The argument table itself is just an array of void pointers, and by convention each `arg_xxx` struct has a known `arg_hdr` struct as its first entry that the argtable functions use to identify the structure.
 
-By way of example, let us consider the arg_int struct which is used for command line options taking integer arguments, as in –scalar=7.
+For example, let us consider the `arg_int` struct, which is used for command-line options taking integer arguments, as in -–scalar=7.
 
 ```
 struct arg_int
