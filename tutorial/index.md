@@ -339,7 +339,7 @@ and in verbose form as:
 
 Notice that optional entries are automatically enclosed in square brackets whereas mandatory arguments are not. Futhermore arguments that accept multiple instances are displayed once per instance, as in “<file> [<file>]”. This occurs up to a maximum of three instances after which the repetition is replaced by an elipisis, as in “[<file>]...”.
 
-The arg_print_syntax functions safely ignore NULL short and long option strings, whereas a NULL datatype string is automatically replaced by the default datatype for that arg_xxx struct. The default datatype can be suppressed by using an empty datatype string instead of a NULL.
+The `arg_print_syntax` functions safely ignore NULL short and long option strings, whereas a NULL datatype string is automatically replaced by the default datatype for that arg_xxx struct. The default datatype can be suppressed by using an empty datatype string instead of a NULL.
 
 
 ### Displaying the Option Glossary
