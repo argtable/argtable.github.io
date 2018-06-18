@@ -97,7 +97,7 @@ Here is a list of reasons why you should include Argtable in your C/C++ toolbox:
 
 ## What's Next
 
-If you want to learn how to use Argtable3, you can start from the [tutorial][tutorial]. If you want to learn from examples, you can check a list of [sample programs][example] in the repository. If you are already familiar with Argtable3, you can check the [documentation][doc] for API details. And if you find any issue of the documentation or code, you can submit an issue to the [Github project page][issue].
+If you want to learn how to use Argtable3, you can start from the [tutorial][tutorial]. If you want to learn from examples, you can check a list of [sample programs][example] in the repository. And if you find any issue of the documentation or code, you can submit an issue to the [Github project page][issue].
 
 CLI programs have become more and more important in the cloud computing era. We hope that Argtable can contribute to the Renaissance of CLI and help to make both developers' and users' life easier.
 
@@ -131,8 +131,8 @@ CLI programs have become more and more important in the cloud computing era. We 
 [heitmann]: email:sheitmann@users.sourceforge.net
 [argtable2]: http://argtable.sourceforge.net/
 [argtable2-sourceforge]: http://sourceforge.net/projects/argtable/
-[tutorial]: http://argtable.org/tutorial/
-[example]: http://argtable.org/examples/
+[tutorial]: https://www.argtable.org/tutorial/
+[example]: https://github.com/argtable/argtable3/tree/master/examples
 [doc]: http://argtable.org/documentation/
-[issue]: https://github.com/tomghuang/tomghuang.github.io/issues
+[issue]: https://github.com/argtable/argtable3/issues
 
