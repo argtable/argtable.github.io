@@ -1,0 +1,870 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Dynamic String" href="arg_api_dyna_string.html" /><link rel="prev" title="Parsing" href="arg_api_parsing.html" />
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+        <title>Output - Argtable 3.3.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=7895be3e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --font-stack: Open Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Argtable 3.3.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">Argtable 3.3.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">USAGE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="arg_installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arg_getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="arg_api_parsing.html">Parsing</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arg_api_dyna_string.html">Dynamic String</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arg_api_subcommand.html">Sub-Command Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arg_api_deprecated.html">Deprecated</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DEVELOPER ZONE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="arg_dev_tests.html">Test Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arg_dev_docs.html">Documentation Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arg_dev_internals.html">Internals</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/arg_api_output.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="output">
+<h1>Output<a class="headerlink" href="#output" title="Link to this heading">¶</a></h1>
+<p>The <em>Argtable3</em> library provides a versatile API for formatting and printing
+command-line argument information. These functions are designed to help
+developers generate user-friendly output, such as usage instructions, error
+messages, and detailed glossaries for command-line applications.</p>
+<p>The output API simplifies the process of presenting argument details in a
+structured and readable format. It supports various output styles, including
+concise syntax descriptions, verbose usage instructions, and GNU-style
+glossaries. Additionally, the API provides functions for printing errors and
+formatting text dynamically.</p>
+<section id="key-features">
+<h2>Key Features<a class="headerlink" href="#key-features" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Option Printing</strong>: Use <code class="docutils literal notranslate"><span class="pre">arg_print_option</span></code> and <code class="docutils literal notranslate"><span class="pre">arg_print_option_ds</span></code> to print
+individual command-line options in a structured format.</p></li>
+<li><p><strong>Syntax Descriptions</strong>: Functions like <code class="docutils literal notranslate"><span class="pre">arg_print_syntax</span></code>,
+<code class="docutils literal notranslate"><span class="pre">arg_print_syntax_ds</span></code>, <code class="docutils literal notranslate"><span class="pre">arg_print_syntaxv</span></code>, and <code class="docutils literal notranslate"><span class="pre">arg_print_syntaxv_ds</span></code>
+generate concise or verbose usage syntax for commands.</p></li>
+<li><p><strong>Glossary Generation</strong>: Create detailed glossaries of command-line arguments
+using <code class="docutils literal notranslate"><span class="pre">arg_print_glossary</span></code>, <code class="docutils literal notranslate"><span class="pre">arg_print_glossary_ds</span></code>, <code class="docutils literal notranslate"><span class="pre">arg_print_glossary_gnu</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">arg_print_glossary_gnu_ds</span></code>.</p></li>
+<li><p><strong>Error Reporting</strong>: Print error messages with <code class="docutils literal notranslate"><span class="pre">arg_print_errors</span></code> and
+<code class="docutils literal notranslate"><span class="pre">arg_print_errors_ds</span></code> to help users identify and resolve issues with their
+input.</p></li>
+<li><p><strong>Custom Formatting</strong>: Use <code class="docutils literal notranslate"><span class="pre">arg_print_formatted</span></code> to dynamically format and
+print text with custom margins and alignment.</p></li>
+</ul>
+<p>This API is designed to enhance the user experience by providing clear and
+informative output for command-line applications. Below is a detailed reference
+for each function in the output API.</p>
+</section>
+<section id="api">
+<h2>API<a class="headerlink" href="#api" title="Link to this heading">¶</a></h2>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.arg_print_option">
+<span class="target" id="argtable3_8h_1adaff52d6414f9c30cf3eceb1ce5d6af3"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">arg_print_option</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">FILE</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fp</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">shortopts</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">longopts</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">datatype</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">suffix</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.arg_print_option" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Prints a formatted command-line option specification to a file stream. </p>
+<p>The <code class="docutils literal notranslate"><span class="pre">arg_print_option</span></code> function generates a formatted representation of a command-line option, including its short options, long options, data type, and an optional suffix. This is useful for displaying option syntax in help messages, usage output, or documentation.</p>
+<p>The formatted option is written to the specified file stream (<code class="docutils literal notranslate"><span class="pre">fp</span></code>). You can control the appearance of the option specification, making it easy to integrate with custom help or documentation systems.</p>
+<p>Example usage: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Print</span> <span class="n">option</span> <span class="n">to</span> <span class="n">stdout</span>
+<span class="n">arg_print_option</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fp</strong> – Output file stream to write to (e.g., <code class="docutils literal notranslate"><span class="pre">stdout</span></code> or <code class="docutils literal notranslate"><span class="pre">stderr</span></code>). </p></li>
+<li><p><strong>shortopts</strong> – String of short option characters (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;h&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">-h</span></code>). </p></li>
+<li><p><strong>longopts</strong> – String of long option names, comma-separated (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;help&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">--help</span></code>). </p></li>
+<li><p><strong>datatype</strong> – String describing the expected data type (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;&lt;file&gt;&quot;</span></code>). </p></li>
+<li><p><strong>suffix</strong> – Optional string to append after the option specification. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.arg_print_option_ds">
+<span class="target" id="argtable3_8h_1a5736b66e5d9e9079fdc776b43e562274"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">arg_print_option_ds</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">arg_dstr_t</span></span><span class="w"> </span><span class="n"><span class="pre">ds</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">shortopts</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">longopts</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">datatype</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">suffix</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.arg_print_option_ds" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Prints a formatted command-line option specification to a dynamic string. </p>
+<p>The <code class="docutils literal notranslate"><span class="pre">arg_print_option_ds</span></code> function generates a formatted representation of a command-line option, including its short options, long options, data type, and an optional suffix. This is useful for displaying option syntax in help messages, usage output, or documentation that is built using dynamic string buffers.</p>
+<p>The formatted option is written to the specified dynamic string object (<code class="docutils literal notranslate"><span class="pre">arg_dstr_t</span></code>). You can control the appearance of the option specification, making it easy to integrate with custom help or documentation systems that require string-based output.</p>
+<p>Example usage: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Print</span> <span class="n">option</span> <span class="n">to</span> <span class="n">a</span> <span class="n">dynamic</span> <span class="n">string</span>
+<span class="n">arg_dstr_t</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">arg_dstr_create</span><span class="p">();</span>
+<span class="n">arg_print_option_ds</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="s2">&quot;verbose&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;level&gt;&quot;</span><span class="p">,</span> <span class="n">NULL</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">arg_dstr_cstr</span><span class="p">(</span><span class="n">ds</span><span class="p">));</span>
+<span class="n">arg_dstr_destroy</span><span class="p">(</span><span class="n">ds</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> – Dynamic string object to write to. </p></li>
+<li><p><strong>shortopts</strong> – String of short option characters (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;h&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">-h</span></code>). </p></li>
+<li><p><strong>longopts</strong> – String of long option names, comma-separated (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;help&quot;</span></code> for <code class="docutils literal notranslate"><span class="pre">--help</span></code>). </p></li>
+<li><p><strong>datatype</strong> – String describing the expected data type (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;&lt;file&gt;&quot;</span></code>). </p></li>
+<li><p><strong>suffix</strong> – Optional string to append after the option specification. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.arg_print_syntax">
+<span class="target" id="argtable3_8h_1ac7afc05ac874e98133488cb365d7a21e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">arg_print_syntax</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">FILE</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fp</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">argtable</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">suffix</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.arg_print_syntax" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Prints a compact, single-line command-line syntax summary to a file stream. </p>
+<p>The <code class="docutils literal notranslate"><span class="pre">arg_print_syntax</span></code> function generates a concise, single-line usage summary for the command-line options and arguments defined in the argument table. This summary is useful for displaying quick usage information to users, such as in the output of a <code class="docutils literal notranslate"><span class="pre">--help</span></code> or usage message.</p>
+<p>The formatted syntax summary is written to the specified file stream (<code class="docutils literal notranslate"><span class="pre">fp</span></code>). You can append a custom <code class="docutils literal notranslate"><span class="pre">suffix</span></code> string to the end of the summary, for example, to indicate positional arguments.</p>
+<p>Example usage: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Print</span> <span class="n">compact</span> <span class="n">syntax</span> <span class="n">summary</span> <span class="n">to</span> <span class="n">stdout</span>
+<span class="n">arg_print_syntax</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="n">argtable</span><span class="p">,</span> <span class="s2">&quot;[FILES...]&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fp</strong> – Output file stream to write to (e.g., <code class="docutils literal notranslate"><span class="pre">stdout</span></code> or <code class="docutils literal notranslate"><span class="pre">stderr</span></code>). </p></li>
+<li><p><strong>argtable</strong> – Array of argument table structs describing the available options and arguments. </p></li>
+<li><p><strong>suffix</strong> – String to append at the end of the syntax summary (e.g., for positional arguments). </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.arg_print_syntax_ds">
+<span class="target" id="argtable3_8h_1ab329a9c9d72c748a70b717f0671a11e2"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">arg_print_syntax_ds</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">arg_dstr_t</span></span><span class="w"> </span><span class="n"><span class="pre">ds</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">argtable</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">suffix</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.arg_print_syntax_ds" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Prints a compact, single-line command-line syntax summary to a dynamic string. </p>
+<p>The <code class="docutils literal notranslate"><span class="pre">arg_print_syntax_ds</span></code> function generates a concise, single-line usage summary for the command-line options and arguments defined in the argument table. This summary is useful for displaying quick usage information to users, such as in the output of a <code class="docutils literal notranslate"><span class="pre">--help</span></code> or usage message, and is written to a dynamic string object (<code class="docutils literal notranslate"><span class="pre">arg_dstr_t</span></code>).</p>
+<p>You can append a custom <code class="docutils literal notranslate"><span class="pre">suffix</span></code> string to the end of the summary, for example, to indicate positional arguments.</p>
+<p>Example usage: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Print</span> <span class="n">compact</span> <span class="n">syntax</span> <span class="n">summary</span> <span class="n">to</span> <span class="n">a</span> <span class="n">dynamic</span> <span class="n">string</span>
+<span class="n">arg_dstr_t</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">arg_dstr_create</span><span class="p">();</span>
+<span class="n">arg_print_syntax_ds</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">argtable</span><span class="p">,</span> <span class="s2">&quot;[FILES...]&quot;</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">arg_dstr_cstr</span><span class="p">(</span><span class="n">ds</span><span class="p">));</span>
+<span class="n">arg_dstr_destroy</span><span class="p">(</span><span class="n">ds</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> – Dynamic string object to write to. </p></li>
+<li><p><strong>argtable</strong> – Array of argument table structs describing the available options and arguments. </p></li>
+<li><p><strong>suffix</strong> – String to append at the end of the syntax summary (e.g., for positional arguments). </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.arg_print_syntaxv">
+<span class="target" id="argtable3_8h_1abbbc79fb60ce047c46735b448f418bda"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">arg_print_syntaxv</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">FILE</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fp</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">argtable</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">suffix</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.arg_print_syntaxv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Prints a verbose, multi-line command-line syntax summary to a file stream. </p>
+<p>The <code class="docutils literal notranslate"><span class="pre">arg_print_syntaxv</span></code> function generates a detailed, multi-line usage summary for the command-line options and arguments defined in the argument table. This verbose style provides more clarity than the compact single-line form, making it easier for users to understand complex command-line interfaces.</p>
+<p>The formatted syntax summary is written to the specified file stream (<code class="docutils literal notranslate"><span class="pre">fp</span></code>). You can append a custom <code class="docutils literal notranslate"><span class="pre">suffix</span></code> string to the end of the summary, for example, to indicate positional arguments.</p>
+<p>Example usage: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Print</span> <span class="n">verbose</span> <span class="n">syntax</span> <span class="n">summary</span> <span class="n">to</span> <span class="n">stdout</span>
+<span class="n">arg_print_syntaxv</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="n">argtable</span><span class="p">,</span> <span class="s2">&quot;[FILES...]&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fp</strong> – Output file stream to write to (e.g., <code class="docutils literal notranslate"><span class="pre">stdout</span></code> or <code class="docutils literal notranslate"><span class="pre">stderr</span></code>). </p></li>
+<li><p><strong>argtable</strong> – Array of argument table structs describing the available options and arguments. </p></li>
+<li><p><strong>suffix</strong> – String to append at the end of the syntax summary (e.g., for positional arguments). </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.arg_print_syntaxv_ds">
+<span class="target" id="argtable3_8h_1a1ff8bdf9aed4c1f87214a0ee1a3646f4"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">arg_print_syntaxv_ds</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">arg_dstr_t</span></span><span class="w"> </span><span class="n"><span class="pre">ds</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">argtable</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">suffix</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.arg_print_syntaxv_ds" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Prints a verbose, multi-line command-line syntax summary to a dynamic string. </p>
+<p>The <code class="docutils literal notranslate"><span class="pre">arg_print_syntaxv_ds</span></code> function generates a detailed, multi-line usage summary for the command-line options and arguments defined in the argument table. This verbose style provides more clarity than the compact single-line form, making it easier for users to understand complex command-line interfaces.</p>
+<p>The formatted syntax summary is written to the specified dynamic string object (<code class="docutils literal notranslate"><span class="pre">arg_dstr_t</span></code>). You can append a custom <code class="docutils literal notranslate"><span class="pre">suffix</span></code> string to the end of the summary, for example, to indicate positional arguments.</p>
+<p>Example usage: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Print</span> <span class="n">verbose</span> <span class="n">syntax</span> <span class="n">summary</span> <span class="n">to</span> <span class="n">a</span> <span class="n">dynamic</span> <span class="n">string</span>
+<span class="n">arg_dstr_t</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">arg_dstr_create</span><span class="p">();</span>
+<span class="n">arg_print_syntaxv_ds</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">argtable</span><span class="p">,</span> <span class="s2">&quot;[FILES...]&quot;</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">arg_dstr_cstr</span><span class="p">(</span><span class="n">ds</span><span class="p">));</span>
+<span class="n">arg_dstr_destroy</span><span class="p">(</span><span class="n">ds</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> – Dynamic string object to write to. </p></li>
+<li><p><strong>argtable</strong> – Array of argument table structs describing the available options and arguments. </p></li>
+<li><p><strong>suffix</strong> – String to append at the end of the syntax summary (e.g., for positional arguments). </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.arg_print_glossary">
+<span class="target" id="argtable3_8h_1af204e089d53b2b38b42f8f6e12f31473"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">arg_print_glossary</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">FILE</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fp</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">argtable</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">format</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.arg_print_glossary" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Prints the argument glossary in a customizable format to a file stream. </p>
+<p>The <code class="docutils literal notranslate"><span class="pre">arg_print_glossary</span></code> function generates a glossary of command-line options and arguments, formatted according to the specified format string. This glossary provides users with a summary of available options, their data types, and descriptions, making it easier to understand the command-line interface.</p>
+<p>The formatted glossary is written to the specified file stream (<code class="docutils literal notranslate"><span class="pre">fp</span></code>). The format string allows you to control the layout and appearance of each glossary entry, enabling integration with custom help or documentation systems.</p>
+<p>Example usage: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Print</span> <span class="n">glossary</span> <span class="n">to</span> <span class="n">stdout</span> <span class="k">with</span> <span class="n">a</span> <span class="n">custom</span> <span class="nb">format</span>
+<span class="n">arg_print_glossary</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="n">argtable</span><span class="p">,</span> <span class="s2">&quot;  </span><span class="si">%-20s</span><span class="s2"> </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fp</strong> – Output file stream to write to (e.g., <code class="docutils literal notranslate"><span class="pre">stdout</span></code> or <code class="docutils literal notranslate"><span class="pre">stderr</span></code>). </p></li>
+<li><p><strong>argtable</strong> – Array of argument table structs describing the available options and arguments. </p></li>
+<li><p><strong>format</strong> – Format string controlling the layout of each glossary entry. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.arg_print_glossary_ds">
+<span class="target" id="argtable3_8h_1a18628bdeee94150c8cd3f04e063a1a18"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">arg_print_glossary_ds</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">arg_dstr_t</span></span><span class="w"> </span><span class="n"><span class="pre">ds</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">argtable</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">format</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.arg_print_glossary_ds" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Prints the argument glossary in a customizable format to a dynamic string. </p>
+<p>The <code class="docutils literal notranslate"><span class="pre">arg_print_glossary_ds</span></code> function generates a glossary of command-line options and arguments, formatted according to the specified format string. This glossary provides users with a summary of available options, their data types, and descriptions, making it easier to understand the command-line interface.</p>
+<p>The formatted glossary is written to the specified dynamic string object (<code class="docutils literal notranslate"><span class="pre">arg_dstr_t</span></code>). The format string allows you to control the layout and appearance of each glossary entry, enabling integration with custom help or documentation systems.</p>
+<p>Example usage: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Print</span> <span class="n">glossary</span> <span class="n">to</span> <span class="n">a</span> <span class="n">dynamic</span> <span class="n">string</span> <span class="k">with</span> <span class="n">a</span> <span class="n">custom</span> <span class="nb">format</span>
+<span class="n">arg_dstr_t</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">arg_dstr_create</span><span class="p">();</span>
+<span class="n">arg_print_glossary_ds</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">argtable</span><span class="p">,</span> <span class="s2">&quot;  </span><span class="si">%-20s</span><span class="s2"> </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">arg_dstr_cstr</span><span class="p">(</span><span class="n">ds</span><span class="p">));</span>
+<span class="n">arg_dstr_destroy</span><span class="p">(</span><span class="n">ds</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> – Dynamic string object to write to. </p></li>
+<li><p><strong>argtable</strong> – Array of argument table structs describing the available options and arguments. </p></li>
+<li><p><strong>format</strong> – Format string controlling the layout of each glossary entry. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.arg_print_glossary_gnu">
+<span class="target" id="argtable3_8h_1a47da6314033b00f78fcf5acb77995262"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">arg_print_glossary_gnu</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">FILE</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fp</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">argtable</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.arg_print_glossary_gnu" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Prints the argument glossary using strict GNU formatting conventions to a file stream. </p>
+<p>The <code class="docutils literal notranslate"><span class="pre">arg_print_glossary_gnu</span></code> function generates a glossary of command-line options and arguments, formatted to comply with GNU style conventions. In this format, long options are vertically aligned in a second column, and lines are wrapped at 80 characters for improved readability and consistency with GNU command-line tool documentation.</p>
+<p>The formatted glossary is written to the specified file stream (<code class="docutils literal notranslate"><span class="pre">fp</span></code>). This function is useful for generating help output that matches the look and feel of standard GNU utilities.</p>
+<p>Example usage: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Print</span> <span class="n">GNU</span><span class="o">-</span><span class="n">style</span> <span class="n">glossary</span> <span class="n">to</span> <span class="n">stdout</span>
+<span class="n">arg_print_glossary_gnu</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="n">argtable</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fp</strong> – Output file stream to write to (e.g., <code class="docutils literal notranslate"><span class="pre">stdout</span></code> or <code class="docutils literal notranslate"><span class="pre">stderr</span></code>). </p></li>
+<li><p><strong>argtable</strong> – Array of argument table structs describing the available options and arguments. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.arg_print_glossary_gnu_ds">
+<span class="target" id="argtable3_8h_1ad92e84177f8dc34b771a2bde2a4519ca"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">arg_print_glossary_gnu_ds</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">arg_dstr_t</span></span><span class="w"> </span><span class="n"><span class="pre">ds</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">argtable</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.arg_print_glossary_gnu_ds" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Prints the argument glossary using strict GNU formatting conventions to a dynamic string. </p>
+<p>The <code class="docutils literal notranslate"><span class="pre">arg_print_glossary_gnu_ds</span></code> function generates a glossary of command-line options and arguments, formatted to comply with GNU style conventions. In this format, long options are vertically aligned in a second column, and lines are wrapped at 80 characters for improved readability and consistency with GNU command-line tool documentation.</p>
+<p>The formatted glossary is written to the specified dynamic string object (<code class="docutils literal notranslate"><span class="pre">arg_dstr_t</span></code>). This function is useful for generating help output that matches the look and feel of standard GNU utilities, especially when you need the output as a string for further processing, logging, or GUI display.</p>
+<p>Example usage: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Print</span> <span class="n">GNU</span><span class="o">-</span><span class="n">style</span> <span class="n">glossary</span> <span class="n">to</span> <span class="n">a</span> <span class="n">dynamic</span> <span class="n">string</span>
+<span class="n">arg_dstr_t</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">arg_dstr_create</span><span class="p">();</span>
+<span class="n">arg_print_glossary_gnu_ds</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">argtable</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">arg_dstr_cstr</span><span class="p">(</span><span class="n">ds</span><span class="p">));</span>
+<span class="n">arg_dstr_destroy</span><span class="p">(</span><span class="n">ds</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<p>
+Prints the argument glossary using strict GNU formatting conventions to a dynamic string.</p>
+<p>Differences to arg_print_glossary() are:<ul class="simple">
+<li><p>wraps lines after 80 chars</p></li>
+<li><p>indents lines without shortops</p></li>
+<li><p>does not accept formatstrings</p></li>
+</ul>
+</p>
+<p>Contributed by Uli Fouquet </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> – Dynamic string object to write to. </p></li>
+<li><p><strong>argtable</strong> – Array of argument table structs describing the available options and arguments.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.arg_print_errors">
+<span class="target" id="argtable3_8h_1a317c8d81fdcc1d325eff52d05eef979d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">arg_print_errors</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">FILE</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fp</span></span>, <a class="reference internal" href="arg_api_parsing.html#c.arg_end_t" title="arg_end_t"><span class="n"><span class="pre">arg_end_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">end</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">progname</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.arg_print_errors" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Prints the details of all errors stored in the end data structure. </p>
+<p>The <code class="docutils literal notranslate"><span class="pre">arg_print_errors</span></code> function writes formatted error messages for all errors recorded in the specified <code class="docutils literal notranslate"><span class="pre">arg_end_t</span></code> structure to the given file stream (<code class="docutils literal notranslate"><span class="pre">fp</span></code>). The <code class="docutils literal notranslate"><span class="pre">progname</span></code> string is prepended to each error message, making it suitable for displaying or logging error output in command-line applications.</p>
+<p>This function is useful for reporting parsing errors to the user after calling <code class="docutils literal notranslate"><span class="pre">arg_parse</span></code>. It provides clear feedback about missing required arguments, invalid values, or other issues encountered during command-line parsing.</p>
+<p>Example usage: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arg_lit_t</span> <span class="o">*</span><span class="n">help</span> <span class="o">=</span> <span class="n">arg_lit0</span><span class="p">(</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;Display help&quot;</span><span class="p">);</span>
+<span class="n">arg_int_t</span> <span class="o">*</span><span class="n">count</span> <span class="o">=</span> <span class="n">arg_int0</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;n&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;Number of times&quot;</span><span class="p">);</span>
+<span class="n">arg_end_t</span> <span class="o">*</span><span class="n">end</span> <span class="o">=</span> <span class="n">arg_end</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="n">void</span> <span class="o">*</span><span class="n">argtable</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="n">help</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">end</span><span class="p">};</span>
+
+<span class="nb">int</span> <span class="n">nerrors</span> <span class="o">=</span> <span class="n">arg_parse</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="n">argtable</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">nerrors</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">arg_print_errors</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>arg_parse, arg_print_errors_ds, arg_dstr_create, arg_dstr_cstr </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fp</strong> – Output file stream to write to (e.g., <code class="docutils literal notranslate"><span class="pre">stdout</span></code> or <code class="docutils literal notranslate"><span class="pre">stderr</span></code>). </p></li>
+<li><p><strong>end</strong> – Pointer to the <code class="docutils literal notranslate"><span class="pre">arg_end</span></code> structure containing error details. </p></li>
+<li><p><strong>progname</strong> – The name of the program to prepend to each error message.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.arg_print_errors_ds">
+<span class="target" id="argtable3_8h_1afa29e4e935d9915b17ee4090a06736bb"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">arg_print_errors_ds</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">arg_dstr_t</span></span><span class="w"> </span><span class="n"><span class="pre">ds</span></span>, <a class="reference internal" href="arg_api_parsing.html#c.arg_end_t" title="arg_end_t"><span class="n"><span class="pre">arg_end_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">end</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">progname</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.arg_print_errors_ds" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Prints the details of all errors stored in the end data structure to a dynamic string. </p>
+<p>The <code class="docutils literal notranslate"><span class="pre">arg_print_errors_ds</span></code> function writes formatted error messages for all errors recorded in the specified <code class="docutils literal notranslate"><span class="pre">arg_end_t</span></code> structure to the provided dynamic string object (<code class="docutils literal notranslate"><span class="pre">arg_dstr_t</span></code>). The <code class="docutils literal notranslate"><span class="pre">progname</span></code> string is prepended to each error message, making it suitable for displaying or logging error output in applications that use dynamic string buffers instead of standard output streams.</p>
+<p>This function is useful for applications that want to capture error messages for later display, logging, or integration with GUI or web interfaces.</p>
+<p>Example usage: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arg_dstr_t</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">arg_dstr_create</span><span class="p">();</span>
+<span class="nb">int</span> <span class="n">nerrors</span> <span class="o">=</span> <span class="n">arg_parse</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="n">argtable</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">nerrors</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">arg_print_errors_ds</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">arg_dstr_cstr</span><span class="p">(</span><span class="n">ds</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="n">arg_dstr_destroy</span><span class="p">(</span><span class="n">ds</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>arg_print_errors, arg_parse, arg_dstr_create, arg_dstr_cstr </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> – Pointer to the dynamic string object to which the error messages are written. </p></li>
+<li><p><strong>end</strong> – Pointer to the <code class="docutils literal notranslate"><span class="pre">arg_end</span></code> structure containing error details. </p></li>
+<li><p><strong>progname</strong> – The name of the program to prepend to each error message.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.arg_print_formatted">
+<span class="target" id="argtable3_8h_1a4d8380ddc5d8352f518ee596b2194c57"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">arg_print_formatted</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">FILE</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fp</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n"><span class="pre">lmargin</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n"><span class="pre">rmargin</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">text</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.arg_print_formatted" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Prints a formatted block of text with specified left and right margins. </p>
+<p>The <code class="docutils literal notranslate"><span class="pre">arg_print_formatted</span></code> function outputs the given text to the specified file stream (<code class="docutils literal notranslate"><span class="pre">fp</span></code>), arranging it in a column with the provided left and right margins. This is useful for generating neatly aligned help messages, glossaries, or any output where column formatting is desired.</p>
+<p>The function automatically wraps lines as needed to ensure that text does not exceed the specified right margin, and indents each line according to the left margin.</p>
+<p>Example usage: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">char</span><span class="o">*</span> <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;This is a long help message that will be wrapped and &quot;</span>
+                  <span class="s2">&quot;indented according to the specified margins.&quot;</span><span class="p">;</span>
+<span class="n">arg_print_formatted</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="n">msg</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<p>
+Prints a formatted block of text with specified left and right margins.</p>
+<p>The lines are wrapped at whitspaces next to right margin. The function does not indent the first line, but only the following ones.</p>
+<p>Example: arg_print_formatted( fp, 0, 5, “Some text that doesn’t fit.” ) will result in the following output:</p>
+<p>Some text that doesn’ t fit.</p>
+<p>Too long lines will be wrapped in the middle of a word.</p>
+<p>arg_print_formatted( fp, 2, 7, “Some text that doesn’t fit.” ) will result in the following output:</p>
+<p>Some text that doesn’ t fit.</p>
+<p>As you see, the first line is not indented. This enables output of lines, which start in a line where output already happened.</p>
+<p>Author: Uli Fouquet </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fp</strong> – Output file stream to write to (e.g., <code class="docutils literal notranslate"><span class="pre">stdout</span></code> or <code class="docutils literal notranslate"><span class="pre">stderr</span></code>). </p></li>
+<li><p><strong>lmargin</strong> – Left margin (number of spaces to indent each line). </p></li>
+<li><p><strong>rmargin</strong> – Right margin (maximum line width). </p></li>
+<li><p><strong>text</strong> – Text to be printed and formatted.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.arg_make_get_help_msg">
+<span class="target" id="argtable3_8h_1af333e40d28aad8a2e7d47d87660d0197"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">arg_make_get_help_msg</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">arg_dstr_t</span></span><span class="w"> </span><span class="n"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.arg_make_get_help_msg" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Generates and retrieves the default help message for the application. </p>
+<p>The <code class="docutils literal notranslate"><span class="pre">arg_make_get_help_msg</span></code> function constructs a standard help message describing the usage, options, and arguments for the main application or module. The generated help text is written to a dynamic string buffer, which can be displayed to the user, printed to the console, or included in documentation.</p>
+<p>This function is typically used to provide users with a quick reference to the application’s command-line interface, especially when no specific command or argument table is provided. It is useful for displaying help output in response to <code class="docutils literal notranslate"><span class="pre">--help</span></code> or similar flags.</p>
+<p>The help message typically includes the application name and its usage syntax, a glossary of available options and arguments with descriptions, and any additional remarks or formatting defined in the argument table.</p>
+<p>Example usage: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arg_dstr_t</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">arg_dstr_create</span><span class="p">();</span>
+<span class="n">arg_make_get_help_msg</span><span class="p">(</span><span class="n">ds</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">arg_dstr_cstr</span><span class="p">(</span><span class="n">ds</span><span class="p">));</span>
+<span class="n">arg_dstr_destroy</span><span class="p">(</span><span class="n">ds</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>arg_make_help_msg, arg_dstr_create, arg_dstr_cstr </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>res</strong> – Dynamic string handle to store the generated help message.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.arg_make_help_msg">
+<span class="target" id="argtable3_8h_1ad2dd32f3dac5f9ecd20ec6b457b98565"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">arg_make_help_msg</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">arg_dstr_t</span></span><span class="w"> </span><span class="n"><span class="pre">ds</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">cmd_name</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">argtable</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.arg_make_help_msg" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Generates a formatted help message for the command-line interface. </p>
+<p>The <code class="docutils literal notranslate"><span class="pre">arg_make_help_msg</span></code> function constructs a comprehensive help message describing the usage, options, and arguments for a command-line application or sub-command. The generated help text is written to a dynamic string buffer, which can be displayed to the user, printed to the console, or included in documentation.</p>
+<p>The help message typically includes the command or sub-command name and its usage syntax, a glossary of available options and arguments with descriptions, and any additional formatting or custom remarks defined in the argument table.</p>
+<p>This function is useful for providing users with clear guidance on how to invoke the application and what options are available. It is commonly called when the user requests help (e.g., with <code class="docutils literal notranslate"><span class="pre">-h</span></code> or <code class="docutils literal notranslate"><span class="pre">--help</span></code>).</p>
+<p>Example usage: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arg_dstr_t</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">arg_dstr_create</span><span class="p">();</span>
+<span class="n">arg_make_help_msg</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="s2">&quot;myapp&quot;</span><span class="p">,</span> <span class="n">argtable</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">arg_dstr_cstr</span><span class="p">(</span><span class="n">ds</span><span class="p">));</span>
+<span class="n">arg_dstr_destroy</span><span class="p">(</span><span class="n">ds</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>arg_dstr_create, arg_dstr_cstr, arg_rem, arg_print_glossary </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> – Dynamic string to store the generated help message. </p></li>
+<li><p><strong>cmd_name</strong> – Name of the command or sub-command to display in the usage line. </p></li>
+<li><p><strong>argtable</strong> – Array of argument table structs describing the available options and arguments.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.arg_make_syntax_err_msg">
+<span class="target" id="argtable3_8h_1ad350aa3400ba3e1f964884e9e59e82ae"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">arg_make_syntax_err_msg</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">arg_dstr_t</span></span><span class="w"> </span><span class="n"><span class="pre">ds</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">argtable</span></span>, <a class="reference internal" href="arg_api_parsing.html#c.arg_end_t" title="arg_end_t"><span class="n"><span class="pre">arg_end_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">end</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.arg_make_syntax_err_msg" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Generates a concise syntax error message for command-line parsing errors. </p>
+<p>The <code class="docutils literal notranslate"><span class="pre">arg_make_syntax_err_msg</span></code> function constructs a brief error message summarizing the syntax errors detected during argument parsing. The message is written to a dynamic string buffer, which can then be displayed to the user or logged for diagnostics. This function is useful for applications that want to provide immediate feedback about what went wrong, without including full usage or help information.</p>
+<p>The generated message typically includes a summary of the errors encountered and the relevant arguments or options that caused the error.</p>
+<p>For a more comprehensive help message that includes usage and glossary information, use <code class="docutils literal notranslate"><span class="pre">arg_make_syntax_err_help_msg</span></code>.</p>
+<p>Example usage: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arg_dstr_t</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">arg_dstr_create</span><span class="p">();</span>
+<span class="nb">int</span> <span class="n">nerrors</span> <span class="o">=</span> <span class="n">arg_parse</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="n">argtable</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">nerrors</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">arg_make_syntax_err_msg</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">argtable</span><span class="p">,</span> <span class="n">end</span><span class="p">);</span>
+    <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">arg_dstr_cstr</span><span class="p">(</span><span class="n">ds</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="n">arg_dstr_destroy</span><span class="p">(</span><span class="n">ds</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>arg_make_syntax_err_help_msg, arg_parse, arg_print_errors, arg_dstr_create, arg_dstr_cstr </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> – Pointer to a dynamic string object to store the generated message. </p></li>
+<li><p><strong>argtable</strong> – An array of argument table structs describing the expected arguments. </p></li>
+<li><p><strong>end</strong> – Pointer to the <code class="docutils literal notranslate"><span class="pre">arg_end</span></code> structure containing error details.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.arg_make_syntax_err_help_msg">
+<span class="target" id="argtable3_8h_1a6295aae26e76a783edd2499c8636c4c7"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">arg_make_syntax_err_help_msg</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">arg_dstr_t</span></span><span class="w"> </span><span class="n"><span class="pre">ds</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">name</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">help</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">nerrors</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">argtable</span></span>, <a class="reference internal" href="arg_api_parsing.html#c.arg_end_t" title="arg_end_t"><span class="n"><span class="pre">arg_end_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">end</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">exitcode</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.arg_make_syntax_err_help_msg" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Generates a detailed syntax error help message for command-line parsing errors. </p>
+<p>The <code class="docutils literal notranslate"><span class="pre">arg_make_syntax_err_help_msg</span></code> function constructs a comprehensive help message when syntax errors are detected during argument parsing. It combines error details, usage information, and optional help text into a dynamic string buffer, which can then be displayed to the user or logged for diagnostics.</p>
+<p>This function is typically used in applications that want to provide users with clear feedback about what went wrong, what the correct syntax is, and how to get further help. It is especially useful for CLI tools that need to guide users through complex argument requirements.</p>
+<p>The generated message may include the command name and a summary of the errors, the correct usage syntax for the command, a glossary of available options and arguments, and additional help text if the help flag is set.</p>
+<p>Example usage: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arg_dstr_t</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">arg_dstr_create</span><span class="p">();</span>
+<span class="nb">int</span> <span class="n">exitcode</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nb">int</span> <span class="n">nerrors</span> <span class="o">=</span> <span class="n">arg_parse</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="n">argtable</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">nerrors</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">arg_make_syntax_err_help_msg</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nerrors</span><span class="p">,</span> <span class="n">argtable</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span>
+                                 <span class="o">&amp;</span><span class="n">exitcode</span><span class="p">);</span>
+    <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">arg_dstr_cstr</span><span class="p">(</span><span class="n">ds</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="n">arg_dstr_destroy</span><span class="p">(</span><span class="n">ds</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>arg_parse, arg_print_errors, arg_dstr_create, arg_dstr_cstr </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> – Pointer to a dynamic string object to store the generated message. </p></li>
+<li><p><strong>name</strong> – The name of the command or application. </p></li>
+<li><p><strong>help</strong> – Nonzero if the help flag was specified; zero otherwise. </p></li>
+<li><p><strong>nerrors</strong> – The number of syntax errors detected during parsing. </p></li>
+<li><p><strong>argtable</strong> – An array of argument table structs describing the expected arguments. </p></li>
+<li><p><strong>end</strong> – Pointer to the <code class="docutils literal notranslate"><span class="pre">arg_end</span></code> structure containing error details. </p></li>
+<li><p><strong>exitcode</strong> – Pointer to an integer where the recommended exit code will be stored.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns 0 on success, or a nonzero error code on failure.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="arg_api_dyna_string.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Dynamic String</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="arg_api_parsing.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Parsing</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, Argtable Project members and individual contributors
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Output</a><ul>
+<li><a class="reference internal" href="#key-features">Key Features</a></li>
+<li><a class="reference internal" href="#api">API</a><ul>
+<li><a class="reference internal" href="#c.arg_print_option"><code class="docutils literal notranslate"><span class="pre">arg_print_option()</span></code></a></li>
+<li><a class="reference internal" href="#c.arg_print_option_ds"><code class="docutils literal notranslate"><span class="pre">arg_print_option_ds()</span></code></a></li>
+<li><a class="reference internal" href="#c.arg_print_syntax"><code class="docutils literal notranslate"><span class="pre">arg_print_syntax()</span></code></a></li>
+<li><a class="reference internal" href="#c.arg_print_syntax_ds"><code class="docutils literal notranslate"><span class="pre">arg_print_syntax_ds()</span></code></a></li>
+<li><a class="reference internal" href="#c.arg_print_syntaxv"><code class="docutils literal notranslate"><span class="pre">arg_print_syntaxv()</span></code></a></li>
+<li><a class="reference internal" href="#c.arg_print_syntaxv_ds"><code class="docutils literal notranslate"><span class="pre">arg_print_syntaxv_ds()</span></code></a></li>
+<li><a class="reference internal" href="#c.arg_print_glossary"><code class="docutils literal notranslate"><span class="pre">arg_print_glossary()</span></code></a></li>
+<li><a class="reference internal" href="#c.arg_print_glossary_ds"><code class="docutils literal notranslate"><span class="pre">arg_print_glossary_ds()</span></code></a></li>
+<li><a class="reference internal" href="#c.arg_print_glossary_gnu"><code class="docutils literal notranslate"><span class="pre">arg_print_glossary_gnu()</span></code></a></li>
+<li><a class="reference internal" href="#c.arg_print_glossary_gnu_ds"><code class="docutils literal notranslate"><span class="pre">arg_print_glossary_gnu_ds()</span></code></a></li>
+<li><a class="reference internal" href="#c.arg_print_errors"><code class="docutils literal notranslate"><span class="pre">arg_print_errors()</span></code></a></li>
+<li><a class="reference internal" href="#c.arg_print_errors_ds"><code class="docutils literal notranslate"><span class="pre">arg_print_errors_ds()</span></code></a></li>
+<li><a class="reference internal" href="#c.arg_print_formatted"><code class="docutils literal notranslate"><span class="pre">arg_print_formatted()</span></code></a></li>
+<li><a class="reference internal" href="#c.arg_make_get_help_msg"><code class="docutils literal notranslate"><span class="pre">arg_make_get_help_msg()</span></code></a></li>
+<li><a class="reference internal" href="#c.arg_make_help_msg"><code class="docutils literal notranslate"><span class="pre">arg_make_help_msg()</span></code></a></li>
+<li><a class="reference internal" href="#c.arg_make_syntax_err_msg"><code class="docutils literal notranslate"><span class="pre">arg_make_syntax_err_msg()</span></code></a></li>
+<li><a class="reference internal" href="#c.arg_make_syntax_err_help_msg"><code class="docutils literal notranslate"><span class="pre">arg_make_syntax_err_help_msg()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=3eb8911e"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    </body>
+</html>
