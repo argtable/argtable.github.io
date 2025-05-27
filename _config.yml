@@ -2,5 +2,3 @@ name: Argtable.org
 markdown: kramdown
 highlighter: rouge
 encoding: UTF-8
-exclude:
-  - docs/
